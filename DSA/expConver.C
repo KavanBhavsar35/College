@@ -1,8 +1,15 @@
+/*
+This expression converter is made by 
+	Khush Panchal(226170307075),
+	Kavan Bhavsar (226170307015) and 
+	Bhavya Bagadia (226170307004)
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-
+#include <windows.h>
 #define MAX_SIZE 50
 
 struct Stack {
@@ -68,6 +75,10 @@ void infixToPostfix(char infix[], char postfix[]) {
             while (!isEmpty(&stack) && peek(&stack) != '(') {
                 postfix[j++] = pop(&stack);
             }
+            if (isEmpty(&stack)) {
+                fprintf(stderr, "Error: Mismatched parentheses\n");
+                return;
+            }
             pop(&stack);
             i++;
         } else if (isOperator(infix[i])) {
@@ -76,8 +87,9 @@ void infixToPostfix(char infix[], char postfix[]) {
             }
             push(&stack, infix[i++]);
         } else {
-            i++;
-        }
+            fprintf(stderr, "Error: Invalid character '%c' in the infix expression\n", infix[i]);
+			return;
+	    }
     }
 
     while (!isEmpty(&stack)) {
@@ -85,64 +97,114 @@ void infixToPostfix(char infix[], char postfix[]) {
     }
 
     postfix[j] = '\0';
-}
 
-float evaluatePostfix(char postfix[]) {
-    struct Stack stack;
-    initialize(&stack);
-
-    int i = 0;
-    while (postfix[i] != '\0') {
-        if (isdigit(postfix[i]) || postfix[i] == '.') {
-            float operand = 0;
-            while (isdigit(postfix[i]) || postfix[i] == '.') {
-                operand = operand * 10 + (postfix[i] - '0');
-                i++;
-            }
-            push(&stack, operand);
-        } else if (isOperator(postfix[i])) {
-            float operand2 = pop(&stack);
-            float operand1 = pop(&stack);
-            switch (postfix[i]) {
-                case '+':
-                    push(&stack, operand1 + operand2);
-                    break;
-                case '-':
-                    push(&stack, operand1 - operand2);
-                    break;
-                case '*':
-                    push(&stack, operand1 * operand2);
-                    break;
-                case '/':
-                    push(&stack, operand1 / operand2);
-                    break;
-            }
-            i++;
-        } else {
-            i++;
+    // Check for remaining unmatched '('
+    while (!isEmpty(&stack)) {
+        if (peek(&stack) == '(' || peek(&stack) == ')') {
+            fprintf(stderr, "Error: Mismatched parentheses\n");
+            return;
         }
+        pop(&stack);
     }
-
-    return pop(&stack);
 }
 
-int main() {
-    char infix[MAX_SIZE];
-    printf("Enter an infix expression: ");
-    fgets(infix, MAX_SIZE, stdin);
 
-    int len = strlen(infix);
-    if (infix[len - 1] == '\n') {
-        infix[len - 1] = '\0';
+void banner() {
+    printf(" ___      __   __   ___  __   __     __      \n");
+    printf("|__  \\_/ |__) |__) |__  /__` /__` | /  \\ |\\ |\n");
+    printf("|___ / \\ |    |  \\ |___ .__/ .__/ | \\__/ | \\|\n");
+	printf("  __   __             ___  __  ___  ___  __  \n");     
+	printf(" /  ` /  \\ |\\ | \\  / |__  |__)  |  |__  |__) \n");      
+	printf(" \\__, \\__/ | \\|  \\/  |___ |  \\  |  |___ |  \\ \n\n");      
+}
+void reverseString(char str[]) {
+    int length = strlen(str);
+    int start = 0;
+    int end = length - 1;
+
+    while (start < end) {
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+
+        start++;
+        end--;
     }
+}
+void revstr(char *str1)  {  
+    int i, len, temp;  
+    len = strlen(str1);  
+      
+    for (i=0;i<len/2;i++)  {  
+        temp = str1[i];  
+        str1[i] = str1[len - i - 1];  
+        str1[len - i - 1] = temp;  
+    }  
+    for (i = 0; i < len; i++)  { 
+        if (str1[i] == '(') {
+            str1[i] = ')';
+        } else if (str1[i] == ')') {
+            str1[i] = '(';
+        } else {
+        	continue;
+		}
+	}	
+}  
+int main() {
+    char infix[MAX_SIZE], postfix[MAX_SIZE];
+    char ch;
+    int len;
+    do {
+    	system("cls");
+		banner();
+	    printf("1) Infix to Postfix\n");
+	    printf("2) Infix to Prefix\n");
+	    printf("3) Exit\n");
+	    printf("Enter your choice: ");
 	
-    char postfix[MAX_SIZE];
-    infixToPostfix(infix, postfix);
+	    scanf(" %c", &ch);
+	    getchar(); 
+	
+	    switch (ch) {
+	        case '1':
+	            len = 0;
+	            printf("\n\nEnter an infix expression: ");
+	            fgets(infix, MAX_SIZE, stdin);
+	
+	            len = strlen(infix);
+	            if (infix[len - 1] == '\n') {
+	                infix[len - 1] = '\0';
+	            }
+	
+	            infixToPostfix(infix, postfix);
+	
+	            printf("\n\nPostfix expression: %s\n\n\n\n", postfix);
+				system("pause");
 
-    printf("Postfix expression: %s\n", postfix);
-
-    float result = evaluatePostfix(postfix);
-    printf("Result: %.2f\n", result);
-
+	            break;
+	        case '2':
+	            len = 0;
+	            printf("\n\nEnter an infix expression: ");
+	            fgets(infix, MAX_SIZE, stdin);
+	
+	            len = strlen(infix);
+	            if (infix[len - 1] == '\n') {
+	                infix[len - 1] = '\0';
+	            }
+	            revstr(infix);
+	
+	            infixToPostfix(infix, postfix);
+	            revstr(postfix);
+	
+	            printf("\n\nPrefix expression: %s\n\n\n\n", postfix);
+	            system("pause");
+	            break;
+	        case '3':
+	            break;
+	        default:
+	        	printf("\n\n Please choose any one from above List !!\n\n\n\n");
+	        	system("pause");
+	    }
+	} while (ch != '3');
     return 0;
 }
