@@ -34,7 +34,7 @@ void push(struct Stack *s, float value) {
 }
 
 float pop(struct Stack *s) {
-    if (isEmpty(s)) {
+    if (s->top==-1) {
         printf("Internal error ocuured\n");
         exit(EXIT_FAILURE);
     }
@@ -49,8 +49,12 @@ float peek(struct Stack *s) {
     return s->items[s->top];
 }
 
-int isOperator(char c) {
-    return c == '+' || c == '-' || c == '*' || c == '/';
+int isOperand(char ch) {
+    return isdigit(ch) || ch == '.';
+}
+
+int isOperator(char ch) {
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/';
 }
 
 int precedence(char op) {
@@ -150,8 +154,101 @@ void revstr(char *str1)  {
 		}
 	}	
 }  
+struct evalst {
+    int top;
+    unsigned capacity;
+    float* array;
+};
+void initEval(struct evalst* st, unsigned capacity) {
+    st->top = -1;
+    st->capacity = capacity;
+    st->array = (float*)malloc(st->capacity * sizeof(float));
+}
+
+int isEvalOperand(char ch) {
+    return isdigit(ch) || ch == '.';
+}
+
+int isEvalOperator(char ch) {
+    return ch == '+' || ch == '-' || ch == '*' || ch == '/';
+}
+float evalPop(struct evalst* st) {
+    if (st->top == -1) {
+        printf("Error: st underflow\n");
+        exit(EXIT_FAILURE);
+    }
+    return st->array[st->top--];
+}
+void evalPush(struct evalst* st, float item) {
+    if (st->top == st->capacity - 1) {
+        printf("Error: st overflow\n");
+        exit(EXIT_FAILURE);
+    }
+    st->array[++st->top] = item;
+}
+
+float evaluatePostfix(char expr[]) {
+    struct evalst st;
+    initEval(&st, strlen(expr));
+
+    int i = 0;
+    while (expr[i] != '\0') {
+        if (isEvalOperand(expr[i])) {
+            float operand = 0;
+            while (isEvalOperand(expr[i])) {
+                operand = operand * 10 + (expr[i] - '0');
+                i++;
+            }
+            if (expr[i] == '.') {
+			    i++; // Skip the dot
+			    float decimalPlace = 0.1;
+			    while (isdigit(expr[i])) {
+			        operand += (expr[i] - '0') * decimalPlace;
+			        decimalPlace *= 0.1;
+			        i++;
+			    }
+			}
+            evalPush(&st, operand);
+        } else if (isEvalOperator(expr[i])) {
+            if (st.top < 1) {
+                printf("Error: Insufficient operands for operator %c\n", expr[i]);
+                exit(EXIT_FAILURE);
+            }
+            float operand2 = evalPop(&st);
+            float operand1 = evalPop(&st);
+            switch (expr[i]) {
+                case '+':
+                    evalPush(&st, operand1 + operand2);
+                    break;
+                case '-':
+                    evalPush(&st, operand1 - operand2);
+                    break;
+                case '*':
+                    evalPush(&st, operand1 * operand2);
+                    break;
+                case '/':
+                    if (operand2 == 0) {
+                        printf("Error: Division by zero\n");
+                        exit(EXIT_FAILURE);
+                    }
+                    evalPush(&st, operand1 / operand2);
+                    break;
+            }
+            i++;
+        } else {
+            i++;
+        }
+    }
+
+    if (st.top != 0) {
+        printf("Error: Invalid postfix expression\n");
+        exit(EXIT_FAILURE);
+    }
+
+    return evalPop(&st);
+}
 int main() {
-    char infix[MAX_SIZE], postfix[MAX_SIZE];
+    char infix[MAX_SIZE], postfix[MAX_SIZE], expression[MAX_SIZE];
     char ch;
     int len;
     do {
@@ -159,7 +256,8 @@ int main() {
 		banner();
 	    printf("1) Infix to Postfix\n");
 	    printf("2) Infix to Prefix\n");
-	    printf("3) Exit\n");
+	    printf("3) Evaluate Prefix or Postfix expression\n");
+	    printf("4) Exit\n");
 	    printf("Enter your choice: ");
 	
 	    scanf(" %c", &ch);
@@ -199,12 +297,22 @@ int main() {
 	            printf("\n\nPrefix expression: %s\n\n\n\n", postfix);
 	            system("pause");
 	            break;
+	            
 	        case '3':
+			    printf("\n\nEnter postfix or prefix expression: ");
+			    fgets(expression, MAX_SIZE, stdin);
+			    if (expression[0]=='+' || expression[0]=='-' || expression[0]=='*' || expression[0]=='/'){
+					revstr(expression);
+				}
+			    float result = evaluatePostfix(expression);				
+			    printf("\n\nResult: %.2f\n\n\n\n", result);
+			    system("pause");
+			    break;
+	        case '4':
 	            break;
-	        default:
-	        	printf("\n\n Please choose any one from above List !!\n\n\n\n");
-	        	system("pause");
 	    }
-	} while (ch != '3');
+	} while (ch != '4');
+
+
     return 0;
 }
