@@ -1,0 +1,10 @@
+@"./Data/manager.sql"
+@"./Data/department.sql"
+@"./Data/employees.sql"
+@"./Data/leaves.sql"
+@"./Data/deductions.sql"
+@"./Data/bonuses.sql"
+@"./Data/manager.sql"
+@"./Data/attendance.sql"
+@"./Data/salarycomponents.sql"
+ 
