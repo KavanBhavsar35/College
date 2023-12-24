@@ -297,7 +297,13 @@ int main() {
 	            printf("\n\nPrefix expression: %s\n\n\n\n", postfix);
 	            system("pause");
 	            break;
-	            
+	     	case '4':
+	        	printf("\n\nExiting...\n\n\n\n");
+	            break;
+	        default:
+	        	printf("\n\nInvalid Choice chose only from 1-4...\n\n\n\n");
+	        	system("pause");
+	        	break;
 	        case '3':
 			    printf("\n\nEnter postfix or prefix expression: ");
 			    fgets(expression, MAX_SIZE, stdin);
@@ -308,8 +314,7 @@ int main() {
 			    printf("\n\nResult: %.2f\n\n\n\n", result);
 			    system("pause");
 			    break;
-	        case '4':
-	            break;
+	        
 	    }
 	} while (ch != '4');
 
