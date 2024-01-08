@@ -112,14 +112,23 @@ void infixToPostfix(char infix[], char postfix[]) {
     }
 }
 
-
-void banner() {
-    printf(" ___      __   __   ___  __   __     __      \n");
-    printf("|__  \\_/ |__) |__) |__  /__` /__` | /  \\ |\\ |\n");
-    printf("|___ / \\ |    |  \\ |___ .__/ .__/ | \\__/ | \\|\n");
-	printf("  __   __             ___  __  ___  ___  __  \n");     
-	printf(" /  ` /  \\ |\\ | \\  / |__  |__)  |  |__  |__) \n");      
-	printf(" \\__, \\__/ | \\|  \\/  |___ |  \\  |  |___ |  \\ \n\n");      
+void banner(){
+	printf(" 88888888b                                                       oo                   \n");
+	printf(" 88                                                                                   \n");
+	printf(" 88aaaa    dP.  .dP 88d888b. 88d888b. .d8888b. .d8888b. .d8888b. dP .d8888b. 88d888b. \n");
+	printf(" 88         `8bd8'  88'  `88 88'  `88 88ooood8 Y8ooooo. Y8ooooo. 88 88'  `88 88'  `88 \n");
+	printf(" 88         .d88b.  88.  .88 88       88.  ...       88       88 88 88.  .88 88    88 \n");
+	printf(" 88888888P dP'  `dP 88Y888P' dP       `88888P' `88888P' `88888P' dP `88888P' dP    dP \n");
+	printf("                    88                                                                \n");
+	printf("                    dP                                                                \n");
+	printf(" a88888b.                                                dP                           \n");
+	printf("d8'   `88                                                88                           \n");
+	printf("88        .d8888b. 88d888b. dP   .dP .d8888b. 88d888b. d8888P .d8888b. 88d888b.       \n");
+	printf("88        88'  `88 88'  `88 88   d8' 88ooood8 88'  `88   88   88ooood8 88'  `88       \n");
+	printf("Y8.   .88 88.  .88 88    88 88 .88'  88.  ... 88         88   88.  ... 88             \n");
+	printf(" Y88888P' `88888P' dP    dP 8888P'   `88888P' dP         dP   `88888P' dP             \n");
+	printf("                                                                                      \n");
+                                                                                      
 }
 void reverseString(char str[]) {
     int length = strlen(str);
