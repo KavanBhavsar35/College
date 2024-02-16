@@ -127,6 +127,13 @@
             border-color: none;
             box-shadow: none;
         }
+        div.accordion-body a[href="#"] {
+            opacity: 0.5;
+            pointer-events: none; 
+            text-decoration: none;
+            color: gray; 
+            cursor: not-allowed;  
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -176,8 +183,8 @@
                 </h2>
                 <div id="practical1" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3">
-                        <a href="#" class="link">i. installation</a>
-                        <a href="#" class="link">ii. Hello World!</a>
+                        <a target="_blank" href="#" class="link">i. installation</a>
+                        <a target="_blank" href="http://php-practicals-kavanbhavsar.infinityfreeapp.com/prac1.php" class="link">ii. Hello World!</a>
                     </div>
                 </div>
             </div>
@@ -192,7 +199,7 @@
                 </h2>
                 <div id="practical2" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3">
-                        <a href="#" class="link">i. User Details form</a>
+                        <a target="_blank" href="http://php-practicals-kavanbhavsar.infinityfreeapp.com/prac2.php" class="link">i. User Details form</a>
                     </div>
                 </div>
             </div>
@@ -207,8 +214,8 @@
                 </h2>
                 <div id="practical3" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">i. Simple Calculator</a>
-                        <a href="#" class="link">ii. Salary Slip</a>
+                        <a target="_blank" href="http://php-practicals-kavanbhavsar.infinityfreeapp.com/prac3-1.php" class="link">i. Simple Calculator</a>
+                        <a target="_blank" href="http://php-practicals-kavanbhavsar.infinityfreeapp.com/prac3-2.php" class="link">ii. Salary Slip</a>
                     </div>
                 </div>
             </div>
@@ -223,10 +230,10 @@
                 </h2>
                 <div id="practical4" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">i. Car Company</a>
-                        <a href="#" class="link">ii. GTU result</a>
-                        <a href="#" class="link">iii. Fibonacci</a>
-                        <a href="#" class="link">iv. Multiplication table</a>
+                        <a target="_blank" href="#" class="link">i. Car Company</a>
+                        <a target="_blank" href="http://php-practicals-kavanbhavsar.infinityfreeapp.com/prac4-2.php" class="link">ii. GTU result</a>
+                        <a target="_blank" href="http://php-practicals-kavanbhavsar.infinityfreeapp.com/prac4-3.php" class="link">iii. Fibonacci</a>
+                        <a target="_blank" href="#" class="link">iv. Multiplication table</a>
                     </div>
                 </div>
             </div>
@@ -241,10 +248,10 @@
                 </h2>
                 <div id="practical5" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">i. Length of string</a>
-                        <a href="#" class="link">ii. Sorting Array</a>
-                        <a href="#" class="link">iii. Matrix Multiplication</a>
-                        <a href="#" class="link">iv. Morse Code</a>
+                        <a target="_blank" href="#" class="link">i. Length of string</a>
+                        <a target="_blank" href="#" class="link">ii. Sorting Array</a>
+                        <a target="_blank" href="#" class="link">iii. Matrix Multiplication</a>
+                        <a target="_blank" href="#" class="link">iv. Morse Code</a>
                     </div>
                 </div>
             </div>
@@ -259,10 +266,10 @@
                 </h2>
                 <div id="practical6" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">i. Currency calculator </a>
-                        <a href="#" class="link">ii. String Functions</a>
-                        <a href="#" class="link">iii. Math Functions</a>
-                        <a href="#" class="link">iv. Date Functions</a>
+                        <a target="_blank" href="#" class="link">i. Currency calculator </a>
+                        <a target="_blank" href="#" class="link">ii. String Functions</a>
+                        <a target="_blank" href="#" class="link">iii. Math Functions</a>
+                        <a target="_blank" href="#" class="link">iv. Date Functions</a>
                     </div>
                 </div>
             </div>
@@ -277,10 +284,10 @@
                 </h2>
                 <div id="practical7" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">1. </a>
-                        <a href="#" class="link">2. </a>
-                        <a href="#" class="link">3. </a>
-                        <a href="#" class="link">4. </a>
+                        <a target="_blank" href="#" class="link">1. </a>
+                        <a target="_blank" href="#" class="link">2. </a>
+                        <a target="_blank" href="#" class="link">3. </a>
+                        <a target="_blank" href="#" class="link">4. </a>
                     </div>
                 </div>
             </div>
@@ -295,10 +302,10 @@
                 </h2>
                 <div id="practical8" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">1. </a>
-                        <a href="#" class="link">2. </a>
-                        <a href="#" class="link">3. </a>
-                        <a href="#" class="link">4. </a>
+                        <a target="_blank" href="#" class="link">1. </a>
+                        <a target="_blank" href="#" class="link">2. </a>
+                        <a target="_blank" href="#" class="link">3. </a>
+                        <a target="_blank" href="#" class="link">4. </a>
                     </div>
                 </div>
             </div>
@@ -313,10 +320,10 @@
                 </h2>
                 <div id="practical9" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">1. </a>
-                        <a href="#" class="link">2. </a>
-                        <a href="#" class="link">3. </a>
-                        <a href="#" class="link">4. </a>
+                        <a target="_blank" href="#" class="link">1. </a>
+                        <a target="_blank" href="#" class="link">2. </a>
+                        <a target="_blank" href="#" class="link">3. </a>
+                        <a target="_blank" href="#" class="link">4. </a>
                     </div>
                 </div>
             </div>
@@ -331,10 +338,10 @@
                 </h2>
                 <div id="practical10" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">1. </a>
-                        <a href="#" class="link">2. </a>
-                        <a href="#" class="link">3. </a>
-                        <a href="#" class="link">4. </a>
+                        <a target="_blank" href="#" class="link">1. </a>
+                        <a target="_blank" href="#" class="link">2. </a>
+                        <a target="_blank" href="#" class="link">3. </a>
+                        <a target="_blank" href="#" class="link">4. </a>
                     </div>
                 </div>
             </div>
@@ -349,10 +356,10 @@
                 </h2>
                 <div id="practical11" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">1. </a>
-                        <a href="#" class="link">2. </a>
-                        <a href="#" class="link">3. </a>
-                        <a href="#" class="link">4. </a>
+                        <a target="_blank" href="#" class="link">1. </a>
+                        <a target="_blank" href="#" class="link">2. </a>
+                        <a target="_blank" href="#" class="link">3. </a>
+                        <a target="_blank" href="#" class="link">4. </a>
                     </div>
                 </div>
             </div>
@@ -367,10 +374,10 @@
                 </h2>
                 <div id="practical12" class="accordion-collapse collapse" data-bs-parent="#tableIndex">
                     <div class="accordion-body d-flex flex-column align-items-start ms-3 ms-3">
-                        <a href="#" class="link">1. </a>
-                        <a href="#" class="link">2. </a>
-                        <a href="#" class="link">3. </a>
-                        <a href="#" class="link">4. </a>
+                        <a target="_blank" href="#" class="link">1. </a>
+                        <a target="_blank" href="#" class="link">2. </a>
+                        <a target="_blank" href="#" class="link">3. </a>
+                        <a target="_blank" href="#" class="link">4. </a>
                     </div>
                 </div>
             </div>
