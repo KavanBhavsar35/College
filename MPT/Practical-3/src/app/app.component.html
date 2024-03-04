@@ -1,0 +1,10 @@
+<h1>Property Binding and Event Binding Example</h1>
+<div>
+  <label for="name-input">Enter your name: </label>
+  <input type="text" id="name-input" [(ngModel)]="name">
+  <br /><br />
+  <button (click)="greet()">Greet</button>
+</div>
+<div *ngIf="greeting">
+  <p>{{ greeting }}</p>
+</div>
