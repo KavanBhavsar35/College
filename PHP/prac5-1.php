@@ -1,12 +1,19 @@
 <?php
 
-$string = "Hello, world!";
+$string = trim("This is a long sentence with eight words");
 $length = 0;
+$words = 1;
 
-for ($i = 0; isset($string[$i]); $i++) {
+while (isset($string[$length])) {
+    if ($string[$length] == " ") {
+        $words++;
+    }
     $length++;
 }
 
-echo "The length is : " . $length;
+
+echo "The Sentence is : " . $string . "</br>";
+echo "The length of string is : " . $length . "</br>";
+echo "The word count of string is : " . $words . "</br>";
 
 ?>

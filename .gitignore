@@ -1,4 +1,4 @@
 .vscode/
 *.class
-bootstrap-5.3.2-dist
-*.class
+node_modules/*
+package-lock.json
