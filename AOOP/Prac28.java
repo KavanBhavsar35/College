@@ -1,5 +1,5 @@
 package AOOP;
 
-public class Prac22 {
+public class Prac28 {
     //pending
 }
