@@ -1,7 +1,6 @@
 package AOOP;
 
 public class Prac18 {
-    @SuppressWarnings("unused")
     public static void main(String[] args) {
 
         Car[] cars = new Car[5];
